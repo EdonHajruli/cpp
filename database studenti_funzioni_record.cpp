@@ -1,5 +1,11 @@
 
 
+
+//changes made at 15:18
+
+
+
+
 #include <cmath>
 #include <string>
 #include <iostream>
@@ -237,7 +243,7 @@ void trovamedia(alunno vett[], int dim){
 
 
 
-
+//changes made at 15:18
 
 
 
