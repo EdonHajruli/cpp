@@ -19,6 +19,7 @@ struct libro
     float costo;
     int npagine;
     char autore[16];
+    long double valorestorico;
 };
 
 
@@ -26,7 +27,6 @@ int main() {
     int i,N,num;
     float prezzo;
     string prova;
-    
     struct libro volume;
     
     cout<<"dammi il numero di elementi del vettore";
@@ -61,7 +61,30 @@ int main() {
     cout<<"\n\nL'indirizzo di memoria del campo titolo del record = "<<&puntrecord -> titolo;
     cout<<"\nL'indirizzo di memoria del campo costo del record = "<<&puntrecord -> costo;
     cout<<"\nL'indirizzo di memoria del campo numero pagine del record = "<<&puntrecord -> npagine;
+    cout<<"\nL'indirizzo di memoria del campo valorestorico del record = "<<&puntrecord -> valorestorico;
     cout<<"\nL'indirizzo di memoria del campo autore del record = "<<&puntrecord -> autore;
+    
+    //aggiungere la grandezza delle variabili col sizeof();
+	cout<<"\n\n\nGrandezza"
+	cout<<"\n\n\n\n"<<sizeof(num);
+	cout<<"\n\n\n\n";
+    
+    //AGGIUNGERE ANCHE TABELLA CONTENUTO DELLE VARIABILI
+    cout<<"\n\n";
+    cout<<"ACQUSIZIONE VALORI DA METTERE NELLE VARIE TIPOLOGIE DI VARIABILI";
+    cout<<"\ndammi un valore per la variabile num(int)";
+    cin>>num;
+    cout<<"\ndammi un valore per la variabile prova(string)";
+    cin>>prova;
+    cout<<"\ndammi un valore per la variabile prezzo(float)";
+    cin>>prezzo;
+    for(i=0;i<N;i++){
+    	cout<<""
+	}
+    
+    
+    
+    
 
     return 0;
 }
