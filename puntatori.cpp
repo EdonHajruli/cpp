@@ -45,23 +45,23 @@ int main() {
     puntrecord =& volume;
     puntnumero =& prezzo;
     
-    cout<<"\n\nIndirizzi delle variabili\nL'indirizzo di memoria della variabile num = "<<puntint<<endl;
+    cout<<"\n\nIndirizzi delle variabili\nL'indirizzo di memoria della variabile num = "<<puntint;
     puntint =& N;
     
-    cout<<"\nL'indirizzo di memoria della variabile N = "<<puntint<<endl;
-    cout<<"\nL'indirizzo di memoria della variabile prova = "<<puntstring<<endl;
-    cout<<"\nL'indirizzo di memoria della variabile prezzo = "<<puntnumero<<endl;
+    cout<<"\nL'indirizzo di memoria della variabile N = "<<puntint;
+    cout<<"\nL'indirizzo di memoria della variabile prova = "<<puntstring;
+    cout<<"\nL'indirizzo di memoria della variabile prezzo = "<<puntnumero;
 
-    cout<<"\nL'indirizzo di memoria della variabile vett[0] = "<<puntvettore<<endl;
-    cout<<"\nL'indirizzo di memoria della variabile vett[1] = "<<puntvettore + 1<<endl;
-    cout<<"\nL'indirizzo di memoria della variabile vett[2] = "<<puntvettore + 2<<endl;
-    cout<<"\nL'indirizzo di memoria del record = "<<puntrecord<<endl;
-    cout<<"\nL'indirizzo di memoria di un secondo record = "<<puntrecord + 1 <<endl;
-    cout<<"\nL'indirizzo di memoria di un terzo record = "<<puntrecord + 2 <<endl;
-    cout<<"\n\nLindirizzo di memoria del campo titolo del record = "<<&puntrecord -> titolo;
-    cout<<"\n\nLindirizzo di memoria del campo costo del record = "<<&puntrecord -> costo;
-    cout<<"\n\nLindirizzo di memoria del campo numero pagine del record = "<<&puntrecord -> npagine;
-    cout<<"\n\nLindirizzo di memoria del campo autore del record = "<<&puntrecord -> autore;
+    cout<<"\nL'indirizzo di memoria della variabile vett[0] = "<<puntvettore;
+    cout<<"\nL'indirizzo di memoria della variabile vett[1] = "<<puntvettore + 1;
+    cout<<"\nL'indirizzo di memoria della variabile vett[2] = "<<puntvettore + 2;
+    cout<<"\nL'indirizzo di memoria del record = "<<puntrecord;
+    cout<<"\nL'indirizzo di memoria di un secondo record = "<<puntrecord + 1;
+    cout<<"\nL'indirizzo di memoria di un terzo record = "<<puntrecord + 2;
+    cout<<"\n\nL'indirizzo di memoria del campo titolo del record = "<<&puntrecord -> titolo;
+    cout<<"\nL'indirizzo di memoria del campo costo del record = "<<&puntrecord -> costo;
+    cout<<"\nL'indirizzo di memoria del campo numero pagine del record = "<<&puntrecord -> npagine;
+    cout<<"\nL'indirizzo di memoria del campo autore del record = "<<&puntrecord -> autore;
 
     return 0;
 }
