@@ -71,7 +71,8 @@ int main()
 			}
 			fclose(puntfile);
 		}
-		
+		cout<<"vuoi rimanere nel programma? si-no: ";
+		cin>>gestione;
 	}
 	
 	
