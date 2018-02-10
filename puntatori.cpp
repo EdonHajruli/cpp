@@ -58,6 +58,8 @@ int main() {
 	}
     
     
+    
+    
     cout<<"\n\nL'indirizzo di memoria del record libro = "<<puntrecord;
     cout<<"\nL'indirizzo di memoria di un secondo record = "<<puntrecord + 1;
     cout<<"\nL'indirizzo di memoria di un terzo record = "<<puntrecord + 2;
