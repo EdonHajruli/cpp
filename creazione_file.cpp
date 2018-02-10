@@ -13,7 +13,7 @@ struct atleta
 
 struct atleta recordfile;
 FILE* puntfile;
-int i,N, sizeatleta,sizefile,nrecordfile, trovato;
+int i,N, sizeatleta,sizefile,nrecordfile, trovato, sizerecord;
 
 int main()
 {
@@ -105,20 +105,20 @@ int main()
         cout<<"vuoi la ricerca per nome?"<<endl;
         cin>>ricercanome;
         while (ricercanome=="si") {
-            cout<<"dammi il nomeda cercare: ";
+            cout<<"dammi il nome da cercare: ";
             cin>>nomeatleta;
             cout<<"dammi il percorso del file: ";
             cin>>percorso;
-            puntfile=fopne(percorso,"r");
+            puntfile=fopen(percorso,"r");
             trovato = 0;
-            sizefile = sizeof(struct atleta);
+            sizeatleta = sizeof(struct atleta);
             fseek(puntfile,0,SEEK_END);
             sizefile = ftell(puntfile);
             nrecordfile = sizefile/sizeatleta;
             cout<<"TABELLONE DATI"<<endl;
             cout<<"NOME\tPESO\tALTEZZA\tMEDAGLIE\n";
             for(i=0; i<nrecordfile; i++){
-                fseek(puntfile,sizeof(struct atleta)*i,SEEK_END);
+                fseek(puntfile,sizeof(struct atleta)*i,SEEK_SET);
                 fread(&recordfile,sizeof(struct atleta),1,puntfile);
                 if(recordfile.nome == nomeatleta){
                     cout<<recordfile.nome<<"\t"<<recordfile.peso<<"\t"<<recordfile.altezza<<"\t"<<recordfile.medaglie<<"\n";
@@ -130,7 +130,7 @@ int main()
             }
             fclose(puntfile);
             cout<<"vuoi fare un altra ricerca per nome? si-no: ";
-            cin>>ricercanome
+            cin>>ricercanome;
         }
         
         cout<<"vuoi rimanere nel programma? si-no: ";
