@@ -13,12 +13,12 @@ struct atleta
 
 struct atleta recordfile;
 FILE* puntfile;
-int i,N, sizeatleta,sizefile,nrecordfile, nre;
+int i,N, sizeatleta,sizefile,nrecordfile, trovato;
 
 int main()
 {
 	string gestione, aggiunta, percorso;
-	cout<<"vuoi creare un file, aggiungere recordm, leggere, sovvrascrivere record, fare record? si-no: ";
+	cout<<"vuoi creare un file, aggiungere record, leggere, sovvrascrivere record, fare record? si-no: ";
 	cin>>gestione;
 	while(gestione == "si")
 	{
@@ -71,8 +71,70 @@ int main()
 			}
 			fclose(puntfile);
 		}
-		cout<<"vuoi rimanere nel programma? si-no: ";
-		cin>>gestione;
+		
+        
+        string sovra;
+        int recordnumero;
+        cout<<"vuoi sovrascrivere un record?si-no: ";
+        cin>>sovra;
+        while(sovra == "si"){
+            cout<<"dammi il percorso del file: ";
+            cin>>percorso;
+            cout<<"dammi il numero del record da sovrascrivere (il primo record ha numero 0): ";
+            cin>>recordnumero;
+            puntfile=fopen(percorso,"r+");
+            cout<<"NUOVI DATI\n\n";
+            cout<<"dammi il nome dell'atleta: ";
+            cin>>recordfile.nome;
+            cout<<endl<<"dammi il peso: ";
+            cin>>recordfile.peso;
+            cout<<endl<<"dammi l'altezza: ";
+            cin>>recordfile.altezza;
+            cout<<endl<<"dammi il numero di medaglie: ";
+            cin>>recordfile.medaglie;
+            
+            fseek(puntfile,sizeof(struct atleta)*recordnumero,SEEK_SET);
+            fwrite(&recordfile,sizeof(struct atleta),1,puntfile);
+            fclose(puntfile);
+            cout<<"vuoi sovrascrivere un altro record? si-no: ";
+            cin>>sovra;
+            
+        }
+        
+        string ricercanome, nomeatleta;
+        cout<<"vuoi la ricerca per nome?"<<endl;
+        cin>>ricercanome;
+        while (ricercanome=="si") {
+            cout<<"dammi il nomeda cercare: ";
+            cin>>nomeatleta;
+            cout<<"dammi il percorso del file: ";
+            cin>>percorso;
+            puntfile=fopne(percorso,"r");
+            trovato = 0;
+            sizefile = sizeof(struct atleta);
+            fseek(puntfile,0,SEEK_END);
+            sizefile = ftell(puntfile);
+            nrecordfile = sizefile/sizeatleta;
+            cout<<"TABELLONE DATI"<<endl;
+            cout<<"NOME\tPESO\tALTEZZA\tMEDAGLIE\n";
+            for(i=0; i<nrecordfile; i++){
+                fseek(puntfile,sizeof(struct atleta)*i,SEEK_END);
+                fread(&recordfile,sizeof(struct atleta),1,puntfile);
+                if(recordfile.nome == nomeatleta){
+                    cout<<recordfile.nome<<"\t"<<recordfile.peso<<"\t"<<recordfile.altezza<<"\t"<<recordfile.medaglie<<"\n";
+                    trovato = 1;
+                }
+            }
+            if(trovato == 0){
+                cout<<"\n\nnessun atleta e' stato trovato!\n";
+            }
+            fclose(puntfile);
+            cout<<"vuoi fare un altra ricerca per nome? si-no: ";
+            cin>>ricercanome
+        }
+        
+        cout<<"vuoi rimanere nel programma? si-no: ";
+        cin>>gestione;
 	}
 	
 	
