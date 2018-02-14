@@ -13,7 +13,7 @@ struct atleta
 
 struct atleta recordfile;
 FILE* puntfile;
-int i,N, sizeatleta,sizefile,nrecordfile, trovato, sizerecord;
+int i,N, sizeatleta,sizefile,nrecordfile, trovato, sizerecord = sizeof(atleta);
 
 int main()
 {
@@ -131,6 +131,42 @@ int main()
             fclose(puntfile);
             cout<<"vuoi fare un altra ricerca per nome? si-no: ";
             cin>>ricercanome;
+        }
+        
+        string elencomaxmed;
+        cout<<"vuoi elencare i posessori del max numero di medaglie? si-no: ";
+        cin>>elencomaxmed;
+        while(elencomaxmed == "si"){
+            
+            int max;
+            cout<<"dammi il percorso del file: ";
+            cin>>percorso;
+            puntfile=fopen(percorso,"r");
+            fseek(puntfile,0,SEEK_END);//mi posziono a fine file
+            sizefile=ftell(puntfile);
+            nrecordfile=sizefile/sizerecord;
+            fseek(puntfile,0,SEEK_SET);//si posiziona all'inizio
+            fread(&recordfile, sizerecord,1,puntfile)//leggo il file
+            max = recordfile.medaglie;
+            for(i=0;i<nrecordfile;i++){
+                fseek(puntfile,0,SEEK_SET);//si posiziona all'inizio
+                fread(&recordfile, sizerecord,1,puntfile)//leggo il file
+                if(recordfile.medaglie>max){
+                    max=recordfile.medaglie;
+                }
+            }
+            cout<<"il numero massimo di medaglie e' pari a "<<max;
+            
+            cout<<"\n\n\tTABELLA DATI"<<endl;
+            cout<<"NOME\tPESO\tALTEZZA\tMEDAGLIE\n";
+            for(i=0;i<nrecordfile;i++){
+                fseek(puntfile,0,SEEK_SET);//si posiziona all'inizio
+                fread(&recordfile, sizerecord,1,puntfile)//leggo il file
+                if(recordfile.medaglie == max){
+                    cout<<recordfile.nome<<"\t"<<recordfile.peso<<"\t"<<recordfile.altezza<<"\t"<<recordfile.medaglie<<"\n";
+                }
+            }
+            fclose(puntfile);
         }
         
         cout<<"vuoi rimanere nel programma? si-no: ";
